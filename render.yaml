@@ -19,7 +19,3 @@ services:
         value: https://api.groq.com/openai/v1/chat/completions
       - key: GROK_MODEL
         value: llama-3.3-70b-versatile
-    disk:
-      name: leads-db
-      mountPath: /app/database
-      sizeGB: 1
