@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenLab AI | Intelligent Sales Automation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">GenLab <span>AI</span></div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="#call-section" class="btn-secondary">Get a Call</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>The Future of <span>Sales Automation</span> is Here.</h1>
+                <p>Experience the power of GenLab AI. Experience a live sales call from our AI assistant in seconds.</p>
+                <a href="#call-section" class="btn-primary">Try Live Demo</a>
+            </div>
+            <div class="hero-gradient"></div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Why Choose GenLab?</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="icon">🚀</div>
+                        <h3>Instant Engagement</h3>
+                        <p>Our AI calls your leads the moment they show interest, increasing conversion by up to 400%.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">🧠</div>
+                        <h3>Smart Conversations</h3>
+                        <p>Powered by Grok API (xAI), our assistant understands context and handles objections naturally.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon">📞</div>
+                        <h3>Telephony Integrated</h3>
+                        <p>Fully automated Twilio integration ensures reliable, high-quality voice calls globally.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="call-section" class="call-form-section">
+            <div class="container">
+                <div class="form-container">
+                    <h2>Request an <span>AI Call</span></h2>
+                    <p>Enter your details and our AI assistant will call you immediately to introduce GenLab.</p>
+                    <form id="lead-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number (with country code)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1234567890" required>
+                        </div>
+                        <button type="submit" id="submit-btn" class="btn-submit">Request AI Call</button>
+                    </form>
+                    <div id="message" class="hidden"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 GenLab AI Technologies. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

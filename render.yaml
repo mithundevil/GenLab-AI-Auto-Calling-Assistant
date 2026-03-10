@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: genlab-ai-calling-assistant
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_PHONE_NUMBER
+        sync: false
+      - key: GROK_API_KEY
+        sync: false
+      - key: BASE_URL
+        sync: false
+      - key: GROK_API_URL
+        value: https://api.groq.com/openai/v1/chat/completions
+      - key: GROK_MODEL
+        value: llama-3.3-70b-versatile
+    disk:
+      name: leads-db
+      mountPath: /app/database
+      sizeGB: 1
