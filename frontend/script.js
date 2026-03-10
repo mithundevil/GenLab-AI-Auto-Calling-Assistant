@@ -14,8 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const formData = new FormData(form);
 
         try {
-            // Using absolute URL with /api prefix to avoid conflicts
-            const response = await fetch('http://localhost:8000/api/lead', {
+            // Dynamically uses production URL or localhost depending on environment
+            const apiBase = window.location.origin;
+            const response = await fetch(`${apiBase}/api/lead`, {
                 method: 'POST',
                 body: formData
             });
