@@ -70,9 +70,9 @@ async def handle_speech_endpoint(request: Request):
         response.redirect(f'/api/ai-call?name={urllib.parse.quote(name)}')
         return Response(content=str(response), media_type="application/xml")
 
-    # Generate AI response
+    # Generate AI response using the dedicated conversation handler
     system_msg = "You are a helpful AI sales voice assistant for GenLab. IMPORTANT: Write ALL responses using ROMANIZED TAMIL only (Tamil words in English letters / Tanglish). Do NOT use Tamil script. Answer concisely in under 40 words."
-    ai_reply = await AIService.get_response(user_speech, system_msg)
+    ai_reply = await AIService.handle_conversation(user_speech, name)
     
     response = VoiceResponse()
     gather = response.gather(
