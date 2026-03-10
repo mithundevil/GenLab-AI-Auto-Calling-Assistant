@@ -3,7 +3,7 @@ from config.settings import settings
 
 class AIService:
     @staticmethod
-    async def get_response(prompt: str, system_message: str = "You are a professional AI sales assistant for GenLab. Speak ONLY in TAMIL. DO NOT USE ENGLISH."):
+    async def get_response(prompt: str, system_message: str = "You are a professional AI sales voice assistant for GenLab. IMPORTANT: Write ALL responses in ROMANIZED TAMIL (Tamil words spelled in English letters, also called Tanglish). Do NOT use Tamil script. Do NOT use Unicode Tamil characters. Example: say 'Vanakkam' not 'வணக்கம்'."):
         headers = {
             "Authorization": f"Bearer {settings.GROK_API_KEY}",
             "Content-Type": "application/json"
@@ -30,10 +30,12 @@ class AIService:
 
     @staticmethod
     async def generate_intro(customer_name: str):
-        system_msg = "You are a professional AI sales assistant for GenLab. Speak ONLY in TAMIL."
+        system_msg = "You are a professional AI sales voice assistant for GenLab. IMPORTANT: Write ALL responses using ROMANIZED TAMIL only (Tamil words in English letters / Tanglish). Do NOT use Tamil script or Unicode Tamil characters. Example style: 'Vanakkam! Naan GenLab-in AI assistant. Ungal thozhilil engal AI thozhilnuttpam ethuvum udavathu?"
         prompt = f"""
-        A potential customer named {customer_name} just requested a call.
-        Introduce GenLab (AI automation experts) and ask how we can help their business today.
-        Speak in fluent, professional Tamil. Keep it under 40 words.
+        A potential customer named {customer_name} just requested a call from our website.
+        Greet them warmly and introduce GenLab as an AI automation company.
+        Ask how you can help their business today.
+        Write ONLY in Romanized Tamil (Tanglish) - Tamil words spelled in English letters.
+        Keep it under 40 words.
         """
         return await AIService.get_response(prompt, system_msg)

@@ -50,10 +50,10 @@ async def ai_call_endpoint(request: Request):
         speechTimeout='auto',
         timeout=10  # Wait up to 10 seconds for user to start speaking
     )
-    gather.say(ai_intro, voice='Polly.Aditi', language='ta-IN')
+    gather.say(ai_intro, voice='Polly.Raveena', language='en-IN')
     
     # If silence, remind gently in Tamil and try again
-    response.say("நீங்கள் அங்கே இருக்கிறீர்களா? (Are you there?)", voice='Polly.Aditi', language='ta-IN')
+    response.say("Neenga ange irukkingala? Are you there?", voice='Polly.Raveena', language='en-IN')
     response.redirect(f'/api/ai-call?name={urllib.parse.quote(name)}')
     
     return Response(content=str(response), media_type="application/xml")
@@ -66,12 +66,12 @@ async def handle_speech_endpoint(request: Request):
     
     if not user_speech:
         response = VoiceResponse()
-        response.say("மன்னிக்கவும், எனக்கு கேட்கவில்லை. (Sorry, I didn't hear you.)", voice='Polly.Aditi', language='ta-IN')
+        response.say("Mannikkavum, enakku ketkavillai. Sorry, I didn't hear you.", voice='Polly.Raveena', language='en-IN')
         response.redirect(f'/api/ai-call?name={urllib.parse.quote(name)}')
         return Response(content=str(response), media_type="application/xml")
 
     # Generate AI response
-    system_msg = "You are a helpful AI sales assistant for GenLab. Speak ONLY in TAMIL. Answer customer questions concisely."
+    system_msg = "You are a helpful AI sales voice assistant for GenLab. IMPORTANT: Write ALL responses using ROMANIZED TAMIL only (Tamil words in English letters / Tanglish). Do NOT use Tamil script. Answer concisely in under 40 words."
     ai_reply = await AIService.get_response(user_speech, system_msg)
     
     response = VoiceResponse()
@@ -82,7 +82,7 @@ async def handle_speech_endpoint(request: Request):
         speechTimeout='auto',
         timeout=10
     )
-    gather.say(ai_reply, voice='Polly.Aditi', language='ta-IN')
+    gather.say(ai_reply, voice='Polly.Raveena', language='en-IN')
     
     # Keep the call alive if silence
     response.redirect(f'/api/handle-speech?name={urllib.parse.quote(name)}')
